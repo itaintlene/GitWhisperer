@@ -27,25 +27,21 @@ GitWhisperer is a local AI-powered developer tool that integrates with VS Code a
 
 ## Project Structure 📂
 
-ai-git-assistant/
-│
-├─ vscode-extension/
-│   ├─ package.json
-│   ├─ extension.js
-│   └─ utils/
-│       └─ gitUtils.js
-│
-├─ python-backend/
-│   ├─ ai_commit_writer.py
-│   ├─ utils/
-│   │   └─ git_handler.py
-│   └─ requirements.txt
-│
-├─ cli-tool/
-│   └─ ai_git_cli.py
-│
-├─ README.md
-└─ .gitignore
+* `ai-git-assistant/`
+    * `vscode-extension/`
+        * `package.json`
+        * `extension.js`
+        * `utils/`
+            * `gitUtils.js`
+    * `python-backend/`
+        * `ai_commit_writer.py`
+        * `utils/`
+            * `git_handler.py`
+        * `requirements.txt`
+    * `cli-tool/`
+        * `ai_git_cli.py`
+    * `README.md`
+    * `.gitignore`
 
 
 ---
