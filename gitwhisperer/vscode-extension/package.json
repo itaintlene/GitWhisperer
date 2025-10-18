@@ -1,0 +1,127 @@
+{
+  "name": "gitwhisperer",
+  "displayName": "GitWhisperer - AI Commit Assistant",
+  "description": "AI-powered Git commit message generation, branch name suggestions, and PR summaries for VS Code",
+  "version": "1.0.0",
+  "publisher": "Harleen",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "AI Tools",
+    "SCM Providers",
+    "Other"
+  ],
+  "keywords": [
+    "git",
+    "ai",
+    "commit",
+    "assistant",
+    "openai",
+    "productivity"
+  ],
+  "activationEvents": [
+    "onCommand:gitwhisperer.generateCommit",
+    "onCommand:gitwhisperer.suggestBranch",
+    "onCommand:gitwhisperer.summarizePR"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "gitwhisperer.generateCommit",
+        "title": "Generate AI Commit Message",
+        "category": "GitWhisperer"
+      },
+      {
+        "command": "gitwhisperer.suggestBranch",
+        "title": "Suggest Branch Name",
+        "category": "GitWhisperer"
+      },
+      {
+        "command": "gitwhisperer.summarizePR",
+        "title": "Summarize Pull Request",
+        "category": "GitWhisperer"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "gitwhisperer.generateCommit",
+          "when": "workspaceFolderCount > 0"
+        },
+        {
+          "command": "gitwhisperer.suggestBranch",
+          "when": "workspaceFolderCount > 0"
+        },
+        {
+          "command": "gitwhisperer.summarizePR",
+          "when": "workspaceFolderCount > 0"
+        }
+      ],
+      "scm/title": [
+        {
+          "command": "gitwhisperer.generateCommit",
+          "when": "scmProvider == git && scmResourceGroup == workingTree",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "GitWhisperer Configuration",
+      "properties": {
+        "gitwhisperer.openaiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API Key for AI-powered features. Get yours at https://platform.openai.com/api-keys"
+        },
+        "gitwhisperer.backendPort": {
+          "type": "number",
+          "default": 8000,
+          "description": "Port for the Python backend server"
+        },
+        "gitwhisperer.commitStyle": {
+          "type": "string",
+          "enum": [
+            "conventional",
+            "detailed",
+            "brief"
+          ],
+          "default": "conventional",
+          "description": "Default style for commit messages"
+        },
+        "gitwhisperer.maxCommitLength": {
+          "type": "number",
+          "default": 50,
+          "description": "Maximum character length for commit messages"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "echo 'Extension uses plain JavaScript - no compilation needed'",
+    "watch": "echo 'No watch script needed'",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^20.0.0",
+    "eslint": "^8.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/gitwhisperer"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/gitwhisperer/issues"
+  },
+  "homepage": "https://github.com/yourusername/gitwhisperer#readme",
+  "license": "MIT",
+  "icon": "icon.png"
+}
